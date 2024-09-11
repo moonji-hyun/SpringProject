@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.happytable.domain.Criteria;
 import com.happytable.domain.ReplyVO;
+import com.happytable.domain.UpdateReplyDTO;
 
 public interface ReplyMapper {
 	// xml와 연동해서 sql 처리 // 추상메서드가 필요하다
@@ -23,8 +24,14 @@ public interface ReplyMapper {
 		// 댓글 삭제 -> 댓글 번호로 레코드를 삭제한 후 int로 리텀 됨 
 		
 		// 댓글 리스트 페이징 처리
-		public List<ReplyVO> getListWithPaging(@Param("cri") Criteria cri, @Param("bno") Long bno);
+		public List<ReplyVO> getListWithPaging(@Param("cri") Criteria cri, @Param("resNum") String resNum);
 		
-		public int getCountByRno(Long bno);
+		public int getCountByRno(String resNum);
+		
+		// 평점 평균 구하기
+		public Double getRatingAverage(String resNum);
+		
+		// 평점 평균 반영하기
+		public int updateRating(UpdateReplyDTO dto);
 		
 }

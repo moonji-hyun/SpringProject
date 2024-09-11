@@ -35,10 +35,10 @@ var replyService = (function() {
 
 	function getList(param, callback, error){ // getList()는 param이라는 개체를 통해서 필요한 파라미터를 전달받아 JSON 목록을 호출
 											  // URL 호출시 확장자를 '/.json' 으로 요구함.
-		var bno = param.bno;
+		var resNum = param.resNum;
 		var page = param.page || 1;
 		
-		$.getJSON("/replies/pages/" + bno + "/" + page + ".json", 
+		$.getJSON("/replies/pages/" + resNum + "/" + page + ".json", 
 			function(data){
 				if(callback){
 				//	callback(data);  // 댓글 목록만 가져오는 경우
@@ -113,7 +113,7 @@ var replyService = (function() {
 		var dateObj = new Date(timeValue);
 		var str="";
 		
-		if(gap < (1000*60*60*24)){ //1000*60*60*24 = 24h
+		if(gap < (1000 * 60 * 60 * 24)){ //1000*60*60*24 = 24h
 			
 			var hh = dateObj.getHours();
 			var mi = dateObj.getMinutes();
@@ -141,7 +141,7 @@ var replyService = (function() {
 		getList : getList,
 		remove : remove,
 		update : update,
-		displlayTime : displayTime
+		displayTime : displayTime
 		
 		} ;   // return end
 })();  // 변수 생성 // ( function(){} return문 )(실행문); -> 즉시실행함수

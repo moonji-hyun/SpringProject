@@ -16,8 +16,8 @@ public interface ReplyService {
 	
 	public int remove(Long rno); 		// 댓글 삭제
 	
-	public List<ReplyVO> getList(Criteria cri, Long bno); 
+	public List<ReplyVO> getList(Criteria cri, String resNum); 
 	// 게시글 번호로 모든 댓글을 리스트로 호출
 	
-	public ReplyPageDTO getListPage(Criteria cri, Long bno);
+	public ReplyPageDTO getListPage(Criteria cri, String resNum);
 }
